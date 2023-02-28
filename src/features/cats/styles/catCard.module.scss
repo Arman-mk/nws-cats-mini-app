@@ -1,0 +1,11 @@
+.cat-card {
+  height: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: rgba(250,250,250,.05);
+  img {
+    aspect-ratio: 1;
+    object-fit: cover;
+    display: block;
+  }
+}

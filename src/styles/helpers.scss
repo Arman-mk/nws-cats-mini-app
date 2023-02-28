@@ -1,0 +1,127 @@
+// GRID
+
+$grid-gap: 5px;
+
+$screen-xs: 450px;
+$screen-sm: 770px;
+$screen-md: 900px;
+$screen-lg: 1200px;
+
+* {
+  box-sizing: border-box;
+}
+
+.grid {
+  display: flex; // fallback for unsupported browsers
+  display: grid;
+}
+
+.inline-grid {
+  display: inline-flex; // fallback for unsupported browsers
+  display: inline-grid;
+}
+
+.grid, .inline-grid {
+  grid-gap: $grid-gap;
+  max-width: 100%;
+}
+
+.rows-auto-fit {
+  grid-auto-rows: 1fr;
+}
+
+.columns-auto-fill {
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.columns-auto-fit {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+$items: auto normal start center end stretch baseline;
+
+@each $item in $items {
+  .justify-#{$item} {
+    justify-items: #{$item};
+  }
+
+  .justify-self-#{$item} {
+    justify-self: #{$item};
+  }
+
+  .align-#{$item} {
+    align-items: #{$item};
+  }
+
+  .align-self-#{$item} {
+    align-self: #{$item};
+  }
+}
+
+$content: normal start end center stretch space-around space-between space-evenly baseline;
+
+@each $item in $content {
+  .justify-content-#{$item} {
+    justify-content: #{$item};
+  }
+
+  .align-content-#{$item} {
+    align-content: #{$item};
+  }
+}
+
+.grid-item {
+
+}
+
+@for $i from 1 through 12 {
+  .offset-#{$i} {
+    grid-column-start: #{$i + 1};
+  }
+
+  .width-#{$i} {
+    flex: #{$i} 1 auto;
+    grid-column: span #{$i};
+  }
+
+  .columns-#{$i} {
+    grid-template-columns: repeat(#{$i}, 1fr);
+  }
+
+  .columns-#{$i}-auto {
+    grid-template-columns: repeat(#{$i}, auto);
+  }
+
+  .rows-#{$i} {
+    grid-template-rows: repeat(#{$i}, 1fr);
+  }
+
+  .grid-column-start-#{$i} {
+    grid-column-start: #{$i};
+  }
+
+  .grid-column-end-#{$i} {
+    grid-column-end: #{$i};
+  }
+
+  .grid-row-start-#{$i} {
+    grid-row-start: #{$i};
+  }
+
+  .grid-row-end-#{$i} {
+    grid-row-end: #{$i};
+  }
+
+  @media (max-width: $screen-xs) {
+    .columns-#{$i} {
+      grid-template-columns: 1fr;
+    }
+
+    .width-#{$i} {
+      grid-column: span 1;
+    }
+  }
+}
+
+// END GRID
+
